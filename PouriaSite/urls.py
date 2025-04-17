@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import test_v, test_json  # Import the test view from views.py
+# from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test/', test_v),  # Add this line to include the test view
+    path('test_json/', test_json),  # Add this line to include the test view
 ]
