@@ -14,6 +14,6 @@ def contact_view(request):
 
 
 def test_view(request):
-    return render(request, 'website/test.html')
+    return render(request, 'website/test.html',{'name':'Pouria','lastname':'Nazirian'})
 
 
