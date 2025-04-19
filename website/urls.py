@@ -9,6 +9,5 @@ urlpatterns = [
     path('', index_view,name='index'),  # Add this line to include the test view
     path('about/', about_view,name='about'),  # Add this line to include the test view
     path('contact/', contact_view,name='contact'),
-    path('test/', test_view,name='test')
     
 ]
