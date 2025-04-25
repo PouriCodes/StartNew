@@ -106,7 +106,7 @@
             </ul>
             <div class="user-details row">
               <p class="user-name col-lg-12 col-md-12 col-6">
-                <a href="#">Mark wiens</a> <span class="lnr lnr-user"></span>
+                <a href="#">{{post.author.get_full_name}}</a> <span class="lnr lnr-user"></span>
               </p>
               <p class="date col-lg-12 col-md-12 col-6">
                 <a href="#">{{post.published_date}}</a>
@@ -124,7 +124,7 @@
             <div class="feature-img">
               <img
                 class="img-fluid"
-                src="{% static 'img/blog/feature-img1.jpg' %}"
+                src="{{post.image.url}}"
                 alt=""
               />
             </div>
@@ -133,6 +133,7 @@
             >
             <p class="excert">
              {{post.content}}
+             {{post.image.url}}
             </p>
             <a href="#" class="primary-btn">View More</a>
           </div>
