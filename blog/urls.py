@@ -9,4 +9,5 @@ urlpatterns = [
     path("", blog_view, name="index"),  # Add this line to include the test view
     path("<int:pid>", blog_single, name="single"),  # Add this line to include the test view
     #path("post-<int:pid>", test, name="test"),  # Add this line to include the test view
+    path('test',test,name='test'),
 ]

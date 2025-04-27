@@ -1,0 +1,8 @@
+{% load static %}
+<ul class="tags">
+  <!--{% for cat in post.category.all %}
+  <li><a href="#">{{cat.name}}</a></li>,
+  {% endfor %}-->
+ <!--{{ post.category.all|join:", "}}-->
+ {% for cat in post.category.all %} <a href="#">{{ cat.name }}</a> {% if not forloop.last %},{% endif %} {% endfor %}
+</ul>
