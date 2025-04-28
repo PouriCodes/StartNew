@@ -8,6 +8,7 @@ app_name = "blog"
 urlpatterns = [
     path("", blog_view, name="index"),  # Add this line to include the test view
     path("<int:pid>", blog_single, name="single"),  # Add this line to include the test view
-    #path("post-<int:pid>", test, name="test"),  # Add this line to include the test view
+    path("category/<str:cat_name>", blog_view, name="category"),  # Add # Add this line to include the test view
+    path("author/<str:author_username>", blog_view, name="author"),  # Add this line to include the test view
     path('test',test,name='test'),
 ]

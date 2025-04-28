@@ -3,6 +3,8 @@
   <!--{% for cat in post.category.all %}
   <li><a href="#">{{cat.name}}</a></li>,
   {% endfor %}-->
- <!--{{ post.category.all|join:", "}}-->
- {% for cat in post.category.all %} <a href="#">{{ cat.name }}</a> {% if not forloop.last %},{% endif %} {% endfor %}
+  <!--{{ post.category.all|join:", "}}-->
+  {% for cat in post.category.all %}
+  <a href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a>
+  {% if not forloop.last %},{% endif %} {% endfor %}
 </ul>
