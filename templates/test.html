@@ -1,15 +1,22 @@
-{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Form Test</title>
   </head>
   <body>
-    <h1>Testing page</h1>
-    <p>test:   {% posts as totalposts %}</p>
-    <!--{% for post in totalposts %}<p>{{post.title|snippet:50}}</p>{% endfor %}-->
-    {% popularposts %}
+    <form action="{% url 'website:test' %}" method="post">
+      {% csrf_token %}
+      <label>name:</label>
+      <input type="text" name="name" /><br>
+      <label>email:</label>
+      <input type="email" name="email" /><br>
+      <label>subject:</label>
+      <input type="text" name="subject" /><br>
+      <label>message:</label>
+      <input type="text" name="message" /><br>
+      <button type="'submit">submit</button>
+    </form>
   </body>
 </html>
