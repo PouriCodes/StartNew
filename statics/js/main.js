@@ -261,7 +261,7 @@ $(document).ready(function() {
         function init() {
             var mapOptions = {
                 zoom: 11,
-                center: new google.maps.LatLng(40.6700, -73.9400), // New York
+                center: new google.maps.LatLng(35.840813, 50.972282), // New York
                 styles: [{
                     "featureType": "water",
                     "elementType": "geometry",

@@ -15,3 +15,9 @@ class Contact(models.Model):
 
 # SELECT * FROM post
 # SELECT * FROM post WHERE status = 1
+
+class Newsletter(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email

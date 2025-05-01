@@ -10,5 +10,6 @@ urlpatterns = [
     path('about/', about_view,name='about'),  # Add this line to include the test view
     path('contact/', contact_view,name='contact'),
     path('test/', test_view,name='test'),  # Add this line to include the test view
+    path('newsletter/', newsletter_view,name='newsletter'),  # Add this line to include the test view
     
 ]
