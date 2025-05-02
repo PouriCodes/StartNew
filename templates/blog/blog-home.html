@@ -1,5 +1,4 @@
-{% extends 'base.html' %}{% load static %}{% load blog_tags %} {% block
-content%}
+{% extends 'base.html' %}{% load static %}{% load blog_tags %} {% block content %}
 <!-- start banner Area -->
 <section class="banner-area relative blog-home-banner" id="home">
   <div class="overlay overlay-bg"></div>
@@ -149,7 +148,7 @@ content%}
                 </span>
               </a>
             </li>
-            {% endif %} {% for i in posts.paginator.page_range %} 
+            {% endif %} {% for i in posts.paginator.page_range %}
             {% if posts.number == i %}
             <li class="page-item active">
               <a href="?page={{i}}" class="page-link">{{i}}</a>
@@ -204,3 +203,5 @@ content%}
   </div>
 </section>
 {% endblock %}
+<!-- End post-content Area -->
+

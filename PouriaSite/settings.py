@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',  # For humanizing numbers and dates
+    'django_extensions',  # For additional Django features
+
+
     'website.apps.WebsiteConfig',  # Add your app here
     'blog'
 ]
@@ -121,7 +125,7 @@ STATIC_URL = 'static/' # URL to use when referring to static files located in ST
 STATIC_ROOT = BASE_DIR / 'static'  # Directory to collect static files
 
 MEDIA_URL = 'media/'   # URL to use when referring to media files located in MEDIA_ROOT
-MEDIA_ROOT = BASE_DIR / 'media'    # Directory to collect media files       
+MEDIA_ROOT = BASE_DIR / 'media'    # Directory to collect media files
 
 STATICFILES_DIRS = [
     BASE_DIR / 'statics',  # Additional static files directories
