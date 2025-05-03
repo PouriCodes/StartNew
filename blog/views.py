@@ -21,15 +21,17 @@ def blog_view(request,**kwargs):
         posts = posts.filter(category__name=kwargs['cat_name'])
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs['author_username'])
-    posts = Paginator(posts, 3)  # Show 5 posts per page   
-    try:    
+    if kwargs.get('tag_name') != None:
+        posts = posts.filter(tags__name=kwargs['tag_name'])
+    posts = Paginator(posts, 3)  # Show 5 posts per page
+    try:
         page_number = request.GET.get('page')
         posts = posts.get_page(page_number)
     except PageNotAnInteger:
         posts = posts.get_page(1)
     except EmptyPage:
         posts = posts.get_page(1)
-        
+
     context = {
         'posts': posts,
     }
@@ -61,7 +63,7 @@ def blog_search(request):
         search_query = request.GET.get('s')
         if search_query:
             posts = posts.filter(content__contains=search_query)
-        
+
     context = {
         'posts': posts,
     }

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,12 +39,50 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',  # For humanizing numbers and dates
+    'django.contrib.sites',  # For Django sites framework
+    'django.contrib.sitemaps',  # For sitemap generation
+    'robots',  # For robots.txt generation
+    'debug_toolbar',  # For debugging
+    'taggit',  # For tagging functionality
+
+    'captcha',  # For CAPTCHA fields
+    'django_summernote',  # For rich text editing
     'django_extensions',  # For additional Django features
-
-
     'website.apps.WebsiteConfig',  # Add your app here
     'blog'
 ]
+
+# sites framework settings
+SITE_ID = 2
+
+# robots settings
+ROBOTS_USE_HOST = False  # Use sitemap for robots.txt
+ROBOTS_USE_SITEMAP = True  # Use sitemap for robots.txt
+
+# summernote settings
+UMMETTE_THEME = 'bs5'  # Use Bootstrap 5 theme for summernote
+
+#SUMMERNOTE_CONFIG = {
+    #'iframe': True,  # Use iframe for summernote editor
+ #   'summernote': {
+
+  #      'toolbar': [
+  #          ['style', ['bold', 'italic', 'underline', 'clear']],
+  #          ['font', ['strikethrough', 'superscript', 'subscript']],
+  #          ['fontsize', ['fontsize']],
+   #         ['color', ['color']],
+   #         ['para', ['ul', 'ol', 'paragraph']],
+   #         ['height', ['height']],
+     #       ['insert', ['link', 'picture', 'video']],
+    #        ['view', ['fullscreen', 'codeview']],
+    #    ],
+ #   },
+#}
+
+# captcha admin settings
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',  # Use the default captcha engine
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +92,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Debug toolbar middleware
 ]
 
 ROOT_URLCONF = 'PouriaSite.urls'
@@ -135,3 +175,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # Security setting to prevent clickjacking
