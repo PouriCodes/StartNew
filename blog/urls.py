@@ -1,6 +1,7 @@
 from django.urls import path
 from blog.views import *
 # from django.urls import path
+from blog.feeds import LatestNewsFeed
 
 app_name = "blog"
 
@@ -13,4 +14,5 @@ urlpatterns = [
     path("author/<str:author_username>", blog_view, name="author"),  # Add this line to include the test view
     path('search/', blog_search, name='search'),  # Add this line to include the test view
     path('test',test,name='test'),
+    path('rss/feed', LatestNewsFeed()),  # Add this line to include the test view
 ]
