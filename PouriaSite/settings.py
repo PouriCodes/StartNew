@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'django_summernote',  # For rich text editing
     'django_extensions',  # For additional Django features
     'website.apps.WebsiteConfig',  # Add your app here
-    'blog'
+    'blog',
+    'accounts',
 ]
 
 # sites framework settings

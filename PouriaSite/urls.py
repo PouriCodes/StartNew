@@ -31,7 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),  # Include the URLs from the website app
     path('blog/', include('blog.urls')),  # Include the URLs from the blog app
-
+    path('accounts/', include('accounts.urls')),  # Include the URLs from the accounts app
     path('summernote/', include('django_summernote.urls')),  # Include the URLs for django-summernote
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', include('robots.urls')),
