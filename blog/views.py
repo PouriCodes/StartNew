@@ -3,6 +3,7 @@ from blog.models import Post,Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ from django.contrib import messages
 #        'posts': posts,
 #    }
 #    return render(request, "blog/blog-home.html",context)
-
+@login_required(login_url='/accounts/login')
 def blog_view(request,**kwargs):
     posts = Post.objects.filter(status=1)
     if kwargs.get('cat_name') != None:
@@ -38,6 +39,7 @@ def blog_view(request,**kwargs):
         'posts': posts,
     }
     return render(request, "blog/blog-home.html",context)
+
 
 
 def blog_single(request,pid):

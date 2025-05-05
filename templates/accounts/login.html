@@ -4,15 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sign In</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-  {% if request.user.is_authenticated %}
-  <h1>Welcome {{ request.user.username }}</h1>
-  {% else %}
-  <h1>User is not authenticated</h1>
-  {% endif %}
+<body style="background-color: #007bff;"></body>
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="width: 24rem;">
+      <h3 class="text-center mb-4">Sign In</h3>
+      <form method="post" action="{% url 'accounts:login' %}">
+       {% csrf_token %}
+        <div class="mb-3">
+          <label for="text" class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+        </div>
+        <div class="mb-3">
+          <label for="inoputPassword" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+      </form>
+      <div class="text-center mt-3">
+        <a href="#">Forgot password?</a>
+      </div>
+      <div class="text-center mt-2">
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

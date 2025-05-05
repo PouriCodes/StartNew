@@ -44,8 +44,17 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-sm-6 col-6 header-top-left">
               <ul>
-                <li><a href="https://mql-net.ir/" target="_blank">Visit Us</a></li>
-                <li><a href="https://www.puria-code.ir/" target="_blank">Buy Tickets</a></li>
+                {% if request.user.is_authenticated %}
+                <li style="font-weight: bold; color: #7dd21c; font-size: 14px;">
+                  Logged in as <span style="text-transform: capitalize;">{{ request.user.username }}</span>
+                    <li><a href="https://www.mql-net.ir/" target="_blank" style="color: #0a8be2; font-weight: bold;">My MQL website</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" style="color: #ee5353; font-weight: bold;">Logout</a></li>
+                </li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}" style="color: #7dd21c; font-weight: bold;">Login</a></li>
+                <li><a href="https://www.puria-code.ir/" target="_blank">Signup</a></li>
+                {% endif %}
+
               </ul>
             </div>
             <div class="col-lg-6 col-sm-6 col-6 header-top-right">
