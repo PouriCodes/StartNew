@@ -1,10 +1,11 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from blog.models import Post,Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 #def blog_view(request,cat_name=None,author_username=None):
@@ -17,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 #        'posts': posts,
 #    }
 #    return render(request, "blog/blog-home.html",context)
-@login_required(login_url='/accounts/login')
+#@login_required(login_url='/accounts/login')
 def blog_view(request,**kwargs):
     posts = Post.objects.filter(status=1)
     if kwargs.get('cat_name') != None:
@@ -52,14 +53,17 @@ def blog_single(request,pid):
             messages.add_message(request,messages.ERROR,'Comment not added')
     posts = Post.objects.filter(status=1)
     post = get_object_or_404(posts,pk=pid)
-    comments = Comment.objects.filter(post=post.id,approved=True)
-    form = CommentForm()
-    context = {
-        'post': post,
-        'comments': comments,
-        'form': form,
-    }
-    return render(request, "blog/blog-single.html",context)
+    if not post.login_required or request.user.is_authenticated:
+        comments = Comment.objects.filter(post=post.id,approved=True)
+        form = CommentForm()
+        context = {
+            'post': post,
+            'comments': comments,
+            'form': form,
+        }
+        return render(request, "blog/blog-single.html",context)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 def test(request):
     return render(request, "test.html")

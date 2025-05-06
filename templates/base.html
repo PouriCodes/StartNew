@@ -52,7 +52,7 @@
                 </li>
                 {% else %}
                 <li><a href="{% url 'accounts:login' %}" style="color: #7dd21c; font-weight: bold;">Login</a></li>
-                <li><a href="https://www.puria-code.ir/" target="_blank">Signup</a></li>
+                <li><a href="{% url 'accounts:signup' %}" target="_blank">Signup</a></li>
                 {% endif %}
 
               </ul>
